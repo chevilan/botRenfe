@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Libraries
 from selenium.webdriver.support import expected_conditions as EC
@@ -31,9 +32,12 @@ class tools:
         self.encrypted_password = None
         
         load_dotenv()
-        self.account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-        self.auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-        self.client = Client(self.account_sid, self.auth_token)
+        try:
+            self.account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+            self.auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+            self.client = Client(self.account_sid, self.auth_token)
+        except Exception as e:
+            print(f"Error al configurar el aviso al móvil: {e}")
         
         self.user=''
         self.phone_number=''
@@ -332,7 +336,10 @@ class tools:
             
             print(f"{Fore.GREEN}Tren reservado con éxito!{Style.RESET_ALL}")
             message=f"\nTren {self.id_tren} reservado con éxito!"
-            self.send_message(message)
+            try:
+                self.send_message(message)
+            except Exception as e:
+                print(f"Error al enviar el mensaje: {e}")
             #TODO: Mandar mensaje al movil    
         except Exception as e:
             print(f"Error en confirmar_venta: {e}")
