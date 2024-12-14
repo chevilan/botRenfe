@@ -1,0 +1,6 @@
+selenium
+webdriver-manager
+colorama
+cryptography
+python-dotenv
+twilio
