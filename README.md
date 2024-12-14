@@ -22,8 +22,10 @@ Puedes instalar todas las dependencias utilizando el archivo `requirements.txt`:
 ```bash
 pip install -r requirements.txt
 ```
-#Uso
+## Uso
 Simplemente ejecutar main.py y seguir las instrucciones, se puede añadir un archivo .env con
+```
 export TWILIO_ACCOUNT_SID='[Tus datos de twilio]'
 export TWILIO_AUTH_TOKEN='[Tus datos de twilio]'
+```
 si quieres que te avise al movil
