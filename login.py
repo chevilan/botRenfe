@@ -407,7 +407,7 @@ class BrowserWorker(QObject):
             await confirm_button.click()
             
             try:
-                await asyncio.sleep(5) 
+                await asyncio.sleep(10) 
                 await self.page.wait_for_load_state('networkidle', timeout=10000)
                 
                 current_url = self.page.url
@@ -428,6 +428,7 @@ class BrowserWorker(QObject):
                         print(f"Error al hacer clic en cualquier botón: {str(e)}")
                     
                     try:
+                        await asyncio.sleep(5)
                         volver_button = await self.page.query_selector('#botonVolver')
                         if volver_button:
                             await volver_button.click()
