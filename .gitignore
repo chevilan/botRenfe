@@ -1,4 +1,8 @@
 .env
+*.nsi
+/build
+/dist
+*.exe
 *.png
 *.zip
 *.spec
