@@ -1,8 +1,2 @@
-selenium
-webdriver-manager
-colorama
-cryptography
-python-dotenv
-twilio
-PyQt6==6.5.2
-playwright==1.39.0
+PyQt6
+playwright
