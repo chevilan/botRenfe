@@ -175,6 +175,14 @@ class BrowserWorker(QObject):
         except Exception as e:
             self.login_status.emit(False, f"Error: {str(e)}")
             return False
+        
+    async def refresh_page(self):
+        """funcion para refrescar la pagina actual"""
+        if self.page:
+            await self.page.reload()
+            await self.page.wait_for_load_state('networkidle')
+        else:
+            print("No hay ninguna página abierta para refrescar.")
 
     async def load_abonos(self):
         """cargar los abonos que tiene el usuario"""
@@ -781,6 +789,7 @@ class RenfeBot(QMainWindow):
             attempted_train = None
             
             while not success:
+                print("Intentando reservar trenes... []")
                 for row in selected_rows:
                     # pillar numero de tren
                     numtren_item = self.abono_results_table.item(row, 0)
@@ -800,8 +809,10 @@ class RenfeBot(QMainWindow):
                             print(f"Error al reservar tren {numtren}: {str(e)}")
                     else:
                         print(f"No se encontró el ID del tren en la fila {row}")
-                        
+                print("sleeping")        
                 await asyncio.sleep(5) # esperar para volver a intentarlo
+                print(f"reintentando con {selected_rows}")
+                await self.worker.refresh_page() 
             
         self.browser_thread.execute_task(execute_reservations())
     
