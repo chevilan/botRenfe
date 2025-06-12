@@ -4,20 +4,16 @@ Este proyecto es un bot automatizado que busca trenes en tu abono de Renfe y los
 
 ## Descripción
 
-El bot está diseñado para ayudarte a encontrar y reservar trenes en tu abono de Renfe sin tener que estar constantemente refrescando la página. Una vez que inicias sesión y seleccionas el tren deseado, el bot se encargará de buscar el tren y reservarlo por ti.
+El bot está diseñado para ayudarte a encontrar y reservar trenes en tu abono de Renfe sin tener que estar constantemente refrescando la página. Una vez que inicias sesión y seleccionas el abono, podrás seleccionar una fecha y un trayecto (ida o vuelta) y los viajes (horas) que mejor te convengan. El bot intentará cogerlos indefinidamente hasta que consiga uno de ellos.
 
 ## Requisitos
 
-Tener Google Chrome instalado.
+Tener Playwright junto con sus navegadores.
 
 Para ejecutar este proyecto, necesitas tener instaladas las siguientes librerías de Python:
 
-- `selenium`
-- `webdriver-manager`
-- `colorama`
-- `cryptography`
-- `python-dotenv`
-- `twilio`
+- `PyQt6`
+- `playwright`
 
 Puedes instalar todas las dependencias utilizando el archivo `requirements.txt`:
 
@@ -25,12 +21,7 @@ Puedes instalar todas las dependencias utilizando el archivo `requirements.txt`:
 pip install -r requirements.txt
 ```
 ## Uso
-Simplemente ejecutar main.py y seguir las instrucciones. 
+Simplemente ejecutar login.py y seguir las instrucciones. 
 
-Si quieres que te avise al movil cuando haya encontrado tren se puede añadir un archivo .env con:
-```
-export TWILIO_ACCOUNT_SID='[Tus datos de twilio]'
-export TWILIO_AUTH_TOKEN='[Tus datos de twilio]'
-```
 ## Consideraciones
-Renfe posiblemente solicite un captcha al iniciar sesión, por lo que será recomendable iniciar el script indicandole que muestre la ventana de google chrome para hacerlo manualmente.
+Renfe posiblemente solicite un captcha al iniciar sesión, por lo que se recomienda usar el inicio de sesión manual.
